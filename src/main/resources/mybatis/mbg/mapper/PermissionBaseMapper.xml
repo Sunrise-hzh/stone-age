@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunrise.stoneage.mbg.mapper.PermissionBaseMapper">
+  <resultMap id="BaseResultMap" type="com.sunrise.stoneage.mbg.model.PermissionDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="is_required" jdbcType="BIT" property="isRequired" />
+    <result column="menu_code" jdbcType="VARCHAR" property="menuCode" />
+    <result column="menu_name" jdbcType="VARCHAR" property="menuName" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="is_enable" jdbcType="BIT" property="isEnable" />
+    <result column="is_deleted" jdbcType="BIT" property="isDeleted" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from sys_permission
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.sunrise.stoneage.mbg.model.PermissionDO">
+    insert into sys_permission (id, name, code, 
+      is_required, menu_code, menu_name, 
+      create_time, update_time, is_enable, 
+      is_deleted)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
+      #{isRequired,jdbcType=BIT}, #{menuCode,jdbcType=VARCHAR}, #{menuName,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{isEnable,jdbcType=BIT}, 
+      #{isDeleted,jdbcType=BIT})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.sunrise.stoneage.mbg.model.PermissionDO">
+    update sys_permission
+    set name = #{name,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      is_required = #{isRequired,jdbcType=BIT},
+      menu_code = #{menuCode,jdbcType=VARCHAR},
+      menu_name = #{menuName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      is_enable = #{isEnable,jdbcType=BIT},
+      is_deleted = #{isDeleted,jdbcType=BIT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, name, code, is_required, menu_code, menu_name, create_time, update_time, 
+    is_enable, is_deleted
+    from sys_permission
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, code, is_required, menu_code, menu_name, create_time, update_time, 
+    is_enable, is_deleted
+    from sys_permission
+  </select>
+</mapper>
