@@ -3,11 +3,16 @@ package com.sunrise.stoneage.utils;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.stereotype.Component;
 
 /**
  * Spring上下文工具类
+ * SpringBoot 平台下通过ApplicationContextAware接口的方式实现ApplicationContext上下文实例的获取。
+ * 注：需加 @Component 注解，否则spring不会自动调用setApplicationContext方法来为我们设置上下文实例。
  */
+@Component
 public class SpringUtil implements ApplicationContextAware {
+    // 上下文对象实例
     private static ApplicationContext context;
 
     /**
@@ -16,6 +21,7 @@ public class SpringUtil implements ApplicationContextAware {
      */
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        System.out.println("applicationContext");
         context = applicationContext;
     }
 
