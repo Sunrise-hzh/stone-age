@@ -6,4 +6,6 @@ import com.sunrise.stoneage.mbg.model.UserDO;
 public interface UserMapper extends UserBaseMapper {
 
     UserDO getUserByUsername(String username);
+
+    int countExistByUsername(String username);
 }

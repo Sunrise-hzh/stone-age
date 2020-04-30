@@ -11,12 +11,12 @@ import java.io.Serializable;
 
 public class ShiroSessionManager extends DefaultWebSessionManager {
     //定义常量
-    private static final String AUTHORIZATION = "Authorization";
-    private static final String REFERENCED_SESSION_ID_SOURCE = "Stateless request";
+    private static final String AUTHORIZATION = "Authorization";    // Authorization授权
+    private static final String REFERENCED_SESSION_ID_SOURCE = "Stateless request"; // Stateless request无状态请求
     //重写构造器
     public ShiroSessionManager() {
         super();
-        this.setDeleteInvalidSessions(true);
+        this.setDeleteInvalidSessions(true);    // 删除无效session
     }
     /**
      * 重写方法实现从请求头获取Token便于接口统一

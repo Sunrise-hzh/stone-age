@@ -1,9 +1,12 @@
-package com.sunrise.stoneage.mbg.model;
+package com.sunrise.stoneage.dto;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class UserDO implements Serializable {
+/**
+ * @author huangzihua
+ * @date 2020-04-24
+ */
+public class UserDTO {
     private Long id;
 
     private String nickname;
@@ -12,15 +15,11 @@ public class UserDO implements Serializable {
 
     private String password;
 
-    private String salt;
-
     private Boolean isEnable;
 
     private Date createTime;
 
     private Date updateTime;
-
-    private Boolean isDeleted;
 
     private String headPortraitUrl;
 
@@ -37,7 +36,7 @@ public class UserDO implements Serializable {
     }
 
     public void setNickname(String nickname) {
-        this.nickname = nickname == null ? null : nickname.trim();
+        this.nickname = nickname;
     }
 
     public String getUsername() {
@@ -45,7 +44,7 @@ public class UserDO implements Serializable {
     }
 
     public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
+        this.username = username;
     }
 
     public String getPassword() {
@@ -53,23 +52,15 @@ public class UserDO implements Serializable {
     }
 
     public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+        this.password = password;
     }
 
-    public String getSalt() {
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt == null ? null : salt.trim();
-    }
-
-    public Boolean getIsEnable() {
+    public Boolean getEnable() {
         return isEnable;
     }
 
-    public void setIsEnable(Boolean isEnable) {
-        this.isEnable = isEnable;
+    public void setEnable(Boolean enable) {
+        isEnable = enable;
     }
 
     public Date getCreateTime() {
@@ -88,19 +79,11 @@ public class UserDO implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public Boolean getIsDeleted() {
-        return isDeleted;
-    }
-
-    public void setIsDeleted(Boolean isDeleted) {
-        this.isDeleted = isDeleted;
-    }
-
     public String getHeadPortraitUrl() {
         return headPortraitUrl;
     }
 
     public void setHeadPortraitUrl(String headPortraitUrl) {
-        this.headPortraitUrl = headPortraitUrl == null ? null : headPortraitUrl.trim();
+        this.headPortraitUrl = headPortraitUrl;
     }
 }

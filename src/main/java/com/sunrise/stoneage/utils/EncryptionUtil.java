@@ -5,8 +5,8 @@ import org.apache.shiro.crypto.hash.SimpleHash;
 /**
  * 加密工具类
  */
-public class SHA256Util {
-    private SHA256Util(){}
+public class EncryptionUtil {
+    private EncryptionUtil(){}
 
     // 加密算法
     public final static String SHA_256 = "SHA-256";

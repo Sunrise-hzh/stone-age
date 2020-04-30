@@ -45,7 +45,7 @@ public class ShiroUtil {
     }
 
     public static void deleteCache(String username, boolean isRemoveSession){
-        // 从缓存中获取与session
+        // 从缓存中获取session
         Session session = null;
         Collection<Session> sessions = redisSessionDAO.getActiveSessions();
         UserDO userDO;
@@ -57,6 +57,7 @@ public class ShiroUtil {
             if (attribute == null){
                 continue;
             }
+            System.out.println();
             userDO = (UserDO) ((SimplePrincipalCollection) attribute).getPrimaryPrincipal();
             if (userDO == null) {
                 continue;
