@@ -3,6 +3,8 @@ package com.sunrise.stoneage.config.exception;
 import com.sunrise.stoneage.common.MyResult;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 //@Order(100)
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+    private static final Logger LOGGER = LoggerFactory.getLogger(GlobalExceptionHandler.class);
+
     /**
      * shiro权限验证异常
      * @return
@@ -46,6 +50,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = Exception.class)
     public MyResult exception(Exception exception){
         // 打印日志...
+        LOGGER.info("异常：{}",exception);
         return MyResult.failure(exception.getMessage());
     }
 }

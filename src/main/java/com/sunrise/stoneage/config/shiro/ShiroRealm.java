@@ -6,6 +6,7 @@ import com.sunrise.stoneage.mbg.model.UserDO;
 import com.sunrise.stoneage.service.IPermissionService;
 import com.sunrise.stoneage.service.IRoleService;
 import com.sunrise.stoneage.service.IUserService;
+import com.sunrise.stoneage.utils.ShiroUtil;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -104,7 +105,7 @@ public class ShiroRealm extends AuthorizingRealm {
                 getName()
         );
         // 验证成功开始踢人(清除缓存和Session)
-//        ShiroUtil.deleteCache(username,true);
+        ShiroUtil.deleteCache(username,true);
         return authenticationInfo;
     }
 }

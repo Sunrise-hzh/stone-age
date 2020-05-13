@@ -18,7 +18,6 @@ public class AccountService implements IAccountService {
     @Override
     public void login(String username, String password) {
         Subject currentUser = SecurityUtils.getSubject();
-
         // 判断当前用户是否已通过验证。注：isAuthenticated()和 isRemembered() 存在区别。
         if (!currentUser.isAuthenticated()){
             UsernamePasswordToken token = new UsernamePasswordToken(username, password);

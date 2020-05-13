@@ -9,6 +9,8 @@ import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.SimplePrincipalCollection;
 import org.apache.shiro.subject.support.DefaultSubjectContext;
 import org.crazycake.shiro.RedisSessionDAO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Collection;
 import java.util.Objects;
@@ -17,6 +19,8 @@ import java.util.Objects;
  * shiro 工具类
  */
 public class ShiroUtil {
+    private static final Logger LOGGER = LoggerFactory.getLogger(ShiroUtil.class);
+
     private ShiroUtil(){}
 
     private static RedisSessionDAO redisSessionDAO = SpringUtil.getBean(RedisSessionDAO.class);
@@ -54,10 +58,11 @@ public class ShiroUtil {
         for (Session sessionInfo : sessions) {
             // 遍历Session， 找到该用户名称对应的session
             attribute = sessionInfo.getAttribute(DefaultSubjectContext.PRINCIPALS_SESSION_KEY);
+            LOGGER.debug("DefaultSubjectContext.PRINCIPALS_SESSION_KEY : {}", DefaultSubjectContext.PRINCIPALS_SESSION_KEY);
+            LOGGER.debug("attribute : {}", attribute);
             if (attribute == null){
                 continue;
             }
-            System.out.println();
             userDO = (UserDO) ((SimplePrincipalCollection) attribute).getPrimaryPrincipal();
             if (userDO == null) {
                 continue;

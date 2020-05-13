@@ -103,4 +103,8 @@ public class UserDO implements Serializable {
     public void setHeadPortraitUrl(String headPortraitUrl) {
         this.headPortraitUrl = headPortraitUrl == null ? null : headPortraitUrl.trim();
     }
+
+    public Long getUserId(){
+        return this.getId();
+    }
 }

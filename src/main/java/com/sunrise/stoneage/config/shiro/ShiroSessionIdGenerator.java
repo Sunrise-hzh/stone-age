@@ -17,7 +17,7 @@ public class ShiroSessionIdGenerator implements SessionIdGenerator {
     @Override
     public Serializable generateId(Session session) {
         // 这里使用shiro内部实现的基于Java JDK UUID的生成器。
-        // 因为实现SessionIdGenerator接口，所以必须传入Session对象作为参数，但是该方法并没有用到session。
+        // 因为实现SessionIdGenerator接口，所以必须传入Session对象作为参数，但是该方法并没有用到该参数。
         Serializable sessionId = new JavaUuidSessionIdGenerator().generateId(session);
         LOGGER.info("Session ID is login_token_" + sessionId);
         // 添加前缀 login_token_
