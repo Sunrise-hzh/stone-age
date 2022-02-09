@@ -18,7 +18,7 @@
     <properties>
         <java.version>1.8</java.version>
         <shiro.ehcache.version>1.5.2</shiro.ehcache.version>
-        <shiro.spring.version>1.5.2</shiro.spring.version>
+        <shiro.spring.version>1.7.1</shiro.spring.version>
     </properties>
 
     <dependencies>
